@@ -1,5 +1,6 @@
 import requests
 import csv
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 
@@ -11,9 +12,9 @@ soup = BeautifulSoup(page.content, "html.parser")
 results = soup.find(id="ResultsContainer")
 
 job_elements = results.find_all("div", class_="card-content")
-
+print(datetime.now())
 rows = []
-with open('fake-jobs.csv', 'a') as csv_file:
+with open(datetime.now().strftime("%m%d%Y%H%M%S")+'_fake-jobs.csv', 'a') as csv_file:
     writer = csv.writer(csv_file)
     writer.writerow([
             'Title',
